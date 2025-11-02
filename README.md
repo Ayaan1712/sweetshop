@@ -52,9 +52,6 @@ sweetshop/
 │ └── test/
 └── vite.config.js
 
-yaml
-Copy code
-
 ---
 
 ## ⚙️ Installation & Setup
