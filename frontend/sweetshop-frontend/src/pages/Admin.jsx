@@ -1,5 +1,5 @@
 import { useEffect, useState } from 'react'
-import { get, post, put, delete as del } from '../api/client'
+import { get, post, put, del } from '../api/client'
 import ProtectedRoute from '../routes/ProtectedRoute'
 import SweetCard from '../components/SweetCard'
 

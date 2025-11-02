@@ -8,4 +8,8 @@ client.interceptors.request.use((config) => {
   return config
 })
 export default client
-export const { get, post, put, delete: del } = client
+export const get = client.get
+export const post = client.post
+export const put = client.put
+export const del = client.delete
+

@@ -20,16 +20,20 @@ export default function Register() {
   }
 
   return (
-    <div style={{ maxWidth: 420, margin: '40px auto' }}>
+    <div className="container">
       <h1>Register</h1>
-      <form onSubmit={onSubmit}>
-        <label htmlFor="username">Username</label>
-        <input id="username" value={username} onChange={e => setUsername(e.target.value)} />
-        <label htmlFor="password">Password</label>
-        <input id="password" type="password" value={password} onChange={e => setPassword(e.target.value)} />
+      <form onSubmit={onSubmit} className="auth-form">
+        <div className="form-group">
+          <label htmlFor="username">Username</label>
+          <input id="username" value={username} onChange={e => setUsername(e.target.value)} />
+        </div>
+        <div className="form-group">
+          <label htmlFor="password">Password</label>
+          <input id="password" type="password" value={password} onChange={e => setPassword(e.target.value)} />
+        </div>
         <button type="submit">Create Account</button>
       </form>
-      {error && <p role="alert">{error}</p>}
+      {error && <p role="alert" className="error">{error}</p>}
     </div>
   )
 }
