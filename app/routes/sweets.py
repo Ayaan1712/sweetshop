@@ -1,19 +1,17 @@
 from fastapi import APIRouter, HTTPException, Depends
 from sqlalchemy.orm import Session
 from app import models, schemas
-from app.database import SessionLocal
+from app.dependencies import get_db, get_current_user, get_current_admin
 
 router = APIRouter(prefix="/api/sweets", tags=["Sweets"])
 
-def get_db():
-    db = SessionLocal()
-    try:
-        yield db
-    finally:
-        db.close()
-
 @router.post("/", response_model=schemas.SweetOut, status_code=201)
-def create_sweet(sweet: schemas.SweetCreate, db: Session = Depends(get_db)):
+def create_sweet(
+    sweet: schemas.SweetCreate,
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(get_current_admin),
+):
+    """Only admins can create sweets"""
     new_sweet = models.Sweet(**sweet.dict())
     db.add(new_sweet)
     db.commit()
@@ -22,10 +20,16 @@ def create_sweet(sweet: schemas.SweetCreate, db: Session = Depends(get_db)):
 
 @router.get("/", response_model=list[schemas.SweetOut])
 def get_all_sweets(db: Session = Depends(get_db)):
+    """Public route — anyone can view sweets"""
     return db.query(models.Sweet).all()
 
 @router.get("/search", response_model=list[schemas.SweetOut])
-def search_sweets(name: str = "", category: str = "", db: Session = Depends(get_db)):
+def search_sweets(
+    name: str = "",
+    category: str = "",
+    db: Session = Depends(get_db),
+):
+    """Public search route"""
     query = db.query(models.Sweet)
     if name:
         query = query.filter(models.Sweet.name.contains(name))
@@ -34,7 +38,12 @@ def search_sweets(name: str = "", category: str = "", db: Session = Depends(get_
     return query.all()
 
 @router.put("/{sweet_id}", response_model=schemas.SweetOut)
-def update_sweet(sweet_id: int, sweet_update: dict, db: Session = Depends(get_db)):
+def update_sweet(
+    sweet_id: int,
+    sweet_update: dict,
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(get_current_admin),
+):
     sweet = db.query(models.Sweet).filter(models.Sweet.id == sweet_id).first()
     if not sweet:
         raise HTTPException(status_code=404, detail="Sweet not found")
@@ -45,7 +54,11 @@ def update_sweet(sweet_id: int, sweet_update: dict, db: Session = Depends(get_db
     return sweet
 
 @router.delete("/{sweet_id}")
-def delete_sweet(sweet_id: int, db: Session = Depends(get_db)):
+def delete_sweet(
+    sweet_id: int,
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(get_current_admin),
+):
     sweet = db.query(models.Sweet).filter(models.Sweet.id == sweet_id).first()
     if not sweet:
         raise HTTPException(status_code=404, detail="Sweet not found")
@@ -54,7 +67,12 @@ def delete_sweet(sweet_id: int, db: Session = Depends(get_db)):
     return {"message": "Sweet deleted"}
 
 @router.post("/{sweet_id}/purchase")
-def purchase_sweet(sweet_id: int, db: Session = Depends(get_db)):
+def purchase_sweet(
+    sweet_id: int,
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(get_current_user),
+):
+    """Any logged-in user can purchase"""
     sweet = db.query(models.Sweet).filter(models.Sweet.id == sweet_id).first()
     if not sweet:
         raise HTTPException(status_code=404, detail="Sweet not found")
@@ -65,7 +83,12 @@ def purchase_sweet(sweet_id: int, db: Session = Depends(get_db)):
     return {"message": "Sweet purchased successfully"}
 
 @router.post("/{sweet_id}/restock")
-def restock_sweet(sweet_id: int, db: Session = Depends(get_db)):
+def restock_sweet(
+    sweet_id: int,
+    db: Session = Depends(get_db),
+    current_user: models.User = Depends(get_current_admin),
+):
+    """Admin-only route"""
     sweet = db.query(models.Sweet).filter(models.Sweet.id == sweet_id).first()
     if not sweet:
         raise HTTPException(status_code=404, detail="Sweet not found")
