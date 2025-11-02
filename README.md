@@ -1,9 +1,8 @@
+
 # 🍬 AI Kata: Sweet Shop Management System
 
 A full-stack Sweet Shop Management System built using **FastAPI (Python)** for the backend and **React (Vite)** for the frontend.  
 Implements **JWT authentication**, **role-based access control**, and follows **Test-Driven Development (TDD)** using the Red-Green-Refactor cycle.
-
----
 
 ## 🚀 Features
 
@@ -29,8 +28,9 @@ Implements **JWT authentication**, **role-based access control**, and follows **
 
 ---
 
-## 🧩 Project Structure
 
+## project structure 
+```
 sweetshop/
 ├── backend/
 │ ├── app/
@@ -61,108 +61,115 @@ sweetshop/
 1. Navigate to backend:
    ```bash
    cd backend
-Create a virtual environment and install dependencies:
 
-bash
-Copy code
-python -m venv venv
-source venv/bin/activate  # (Windows: venv\Scripts\activate)
-pip install -r requirements.txt
-Create a .env file:
+2. Create a virtual environment and install dependencies:
 
-env
-Copy code
-SECRET_KEY=your_secret_key
-ALGORITHM=HS256
-ACCESS_TOKEN_EXPIRE_MINUTES=30
-DATABASE_URL=sqlite:///./sweetshop.db
-Run the backend:
+    ```bash
+    python -m venv venv
+    source venv/bin/activate  # (Windows: venv\Scripts\activate)
+    pip install -r requirements.txt
 
-bash
-Copy code
-uvicorn app.main:app --reload
-Access docs at http://127.0.0.1:8000/docs
+3. Create a .env file:
+    ```bash
+    SECRET_KEY=your_secret_key
+    ALGORITHM=HS256
+    ACCESS_TOKEN_EXPIRE_MINUTES=30
+    DATABASE_URL=sqlite:///./sweetshop.db
 
-⚛️ Frontend Setup
-Navigate to frontend:
 
-bash
-Copy code
-cd frontend/sweetshop-frontend
-Install dependencies:
+4. Run the backend:
+    ```bash
+    uvicorn app.main:app --reload
 
-bash
-Copy code
-npm install
-Create .env:
 
-env
-Copy code
-VITE_API_BASE=http://127.0.0.1:8000/api
-Run the app:
+5. Access docs at http://127.0.0.1:8000/docs
 
-bash
-Copy code
-npm run dev
-Open http://localhost:5173
+### ⚛️ Frontend Setup
+---
+1. Navigate to frontend:
 
-🧪 Running Tests
-Backend:
-bash
-Copy code
-pytest -v --cov=app
-Frontend:
-bash
-Copy code
-npm test
-🧠 Test-Driven Development (TDD)
+```bash cd frontend/sweetshop-frontend ```
+
+
+2. Install dependencies:
+
+```bash npm install ```
+
+
+3. Create .env:
+
+```bash VITE_API_BASE=http://127.0.0.1:8000/api ```
+
+
+4. Run the app:
+
+```bash npm run dev ```
+
+
+5. Open http://localhost:5173
+
+## 🧪 Running Tests
+
+To run tests, run the following command
+
+### Backend:
+```bash
+  pytest -v --cov=app
+```
+### Frontend: 
+```bash
+  npm test
+```
+
+
+## 🧠 Test-Driven Development (TDD)
 This project followed the Red-Green-Refactor pattern:
 
-Red: Write failing tests (e.g., test_auth.py, test_sweets.py)
+**Red**: Write failing tests (e.g., test_auth.py, test_sweets.py)
 
-Green: Implement minimal code to pass tests
+**Green**: Implement minimal code to pass tests
 
-Refactor: Simplify and clean code while keeping tests passing
+**Refactor**: Simplify and clean code while keeping tests passing
 
 Example commit flow:
-
-bash
-Copy code
+```bash
 git commit -m "test(auth): add failing tests for user login"
 git commit -m "feat(auth): implement JWT login, tests passing"
-git commit -m "refactor(auth): clean validation logic"
-🧑‍💻 My AI Usage
+git commit -m "refactor(auth): clean validation logic" 
+```
+
+## 🧑‍💻 My AI Usage
+
 I used ChatGPT (GPT-5) as a coding assistant throughout this project.
 
-Tools used:
+**Tools used:**
 
-ChatGPT (OpenAI)
+- ChatGPT (OpenAI)
 
-GitHub Copilot (minor inline suggestions)
+- GitHub Copilot (minor inline suggestions)
 
-How I used AI:
+**How I used AI:**
 
-To generate initial backend boilerplate (models, routes, schemas)
+- To generate initial backend boilerplate (models, routes, schemas)
 
-To write and refine TDD test cases for both backend and frontend
+- To write and refine TDD test cases for both backend and frontend
 
-To explain concepts like dependency injection in FastAPI
+- To explain concepts like dependency injection in FastAPI
 
-To debug configuration issues in Vite and Vitest
+- To debug configuration issues in Vite and Vitest
 
-To design React component structure and API integration logic
+- To design React component structure and API integration logic
 
-Reflection:
+**Reflection:**
 
 Using AI significantly improved my productivity and understanding of TDD.
 Instead of just copy-pasting, I iterated on AI suggestions, debugged errors, and learned clean structuring patterns.
 I ensured every commit including AI assistance lists AI as a co-author.
 
-Example commit:
-
-nginx
-Copy code
+**Example commit:**
+```bash
 git commit -m "feat(auth): implement JWT login with token validation
 Co-authored-by: ChatGPT <AI@users.noreply.github.com>"
+```
 
 🧪 Test Report
