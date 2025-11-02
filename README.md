@@ -172,4 +172,20 @@ git commit -m "feat(auth): implement JWT login with token validation
 Co-authored-by: ChatGPT <AI@users.noreply.github.com>"
 ```
 
-🧪 Test Report
+##🧪 Test Report
+
+![image alt](https://github.com/Ayaan1712/sweetshop/blob/10714cd2d21db06acc2a4c43e6069a1f072c6a35/image.png)
+
+## 🖥️ Output
+
+![image alt](https://github.com/Ayaan1712/sweetshop/blob/d6edadcfdcc98efb044bb7dc60ad6932314d78ac/WhatsApp%20Image%202025-11-02%20at%2023.44.13_190ea324.jpg)
+
+![image alt](https://github.com/Ayaan1712/sweetshop/blob/d6edadcfdcc98efb044bb7dc60ad6932314d78ac/WhatsApp%20Image%202025-11-02%20at%2023.41.06_a71d46b3.jpg)
+
+![image alt](https://github.com/Ayaan1712/sweetshop/blob/d6edadcfdcc98efb044bb7dc60ad6932314d78ac/WhatsApp%20Image%202025-11-02%20at%2023.41.31_e1e64fd2.jpg)
+
+![image alt](https://github.com/Ayaan1712/sweetshop/blob/d6edadcfdcc98efb044bb7dc60ad6932314d78ac/WhatsApp%20Image%202025-11-02%20at%2023.42.08_08df8937.jpg)
+
+![image alt](https://github.com/Ayaan1712/sweetshop/blob/d6edadcfdcc98efb044bb7dc60ad6932314d78ac/WhatsApp%20Image%202025-11-02%20at%2023.42.34_de52e336.jpg)
+
+
