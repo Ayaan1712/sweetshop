@@ -32,9 +32,9 @@ def search_sweets(
     """Public search route"""
     query = db.query(models.Sweet)
     if name:
-        query = query.filter(models.Sweet.name.contains(name))
+        query = query.filter(models.Sweet.name.ilike(f"%{name}%"))  # ✅ ilike adds case-insensitive partial match
     if category:
-        query = query.filter(models.Sweet.category.contains(category))
+        query = query.filter(models.Sweet.category.ilike(f"%{category}%"))
     return query.all()
 
 @router.put("/{sweet_id}", response_model=schemas.SweetOut)
