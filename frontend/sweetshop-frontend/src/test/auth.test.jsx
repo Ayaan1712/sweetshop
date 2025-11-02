@@ -4,16 +4,17 @@ import { MemoryRouter } from 'react-router-dom'
 import App from '../App'
 
 // Mock API: success on login
-vi.mock('../api/client', () => {
-  const actual = vi.importActual('../api/client')
+vi.mock('../api/client', async () => {
+  const actual = await vi.importActual('../api/client')
   return {
     ...actual,
+    get: vi.fn(() => Promise.resolve({ data: [] })), // 👈 mock sweets fetch
     post: vi.fn((url, body) => {
       if (url.endsWith('/auth/login') && body.username && body.password) {
         return Promise.resolve({ data: { access_token: 'fake.jwt.token' } })
       }
       return Promise.reject(new Error('bad request'))
-    })
+    }),
   }
 })
 
