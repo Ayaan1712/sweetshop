@@ -51,7 +51,7 @@ sweetshop/
 │ ├── components/
 │ └── test/
 └── vite.config.js
-
+```
 ---
 
 ## ⚙️ Installation & Setup
