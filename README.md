@@ -188,4 +188,5 @@ Co-authored-by: ChatGPT <AI@users.noreply.github.com>"
 
 ![image alt](https://github.com/Ayaan1712/sweetshop/blob/d6edadcfdcc98efb044bb7dc60ad6932314d78ac/WhatsApp%20Image%202025-11-02%20at%2023.42.34_de52e336.jpg)
 
+![image alt](https://github.com/Ayaan1712/sweetshop/blob/d359d119bb6d383729d944e5ad9688f9ca996a1b/image.png)
 
