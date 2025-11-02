@@ -6,7 +6,8 @@ from app.database import SessionLocal
 from app import models
 from app.config import settings
 
-oauth2_scheme = OAuth2PasswordBearer(tokenUrl="api/auth/login")
+from fastapi.security import HTTPBearer
+oauth2_scheme = HTTPBearer()
 
 def get_db():
     db = SessionLocal()
