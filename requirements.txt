@@ -3,6 +3,7 @@ uvicorn==0.32.0
 sqlalchemy==2.0.25
 python-dotenv==1.0.1
 pydantic==2.9.2
+pydantic-settings
 passlib[bcrypt]==1.7.4
 python-jose==3.3.0
 pytest==8.3.3
